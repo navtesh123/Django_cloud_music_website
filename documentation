@@ -1,0 +1,100 @@
+tutotial-2
+{
+_init_.py just tells the computer to see the dir
+  newbostonDjango as a pyhon package.
+
+settings.py=overall settings for website
+
+url.py=tables of content of the website
+
+wsgi.py=web server gateway
+}
+tutotial 3
+{
+what is an app in django?
+it is a part of a website which does a specific task.
+you need to tell "what an app does in one line",is you
+can't then you need to break the app up.
+
+making a app dir
+python manage.py
+
+
+tutorials 4
+{
+ migrations-connect source-code to data base
+
+ admin-admin functionality
+
+ app-setting of the app
+
+ model-how are you going to store data
+       for this app
+
+test-to test
+
+views-python funtion which take requests
+}
+
+tutorial 5
+{
+when ever the user requests something
+then django goes to the urls.py file of the
+main folder
+
+now in the urls.py file we have all the url
+that are going to be used in the website,
+but if we have like 300 different urls then
+what do we do???
+the urls section would be so congusted
+
+so that python does is that in each app's
+dir you can put all the urls related to
+that app.
+}
+
+tutorial 20(Hardcoded urls)
+{
+the urls whichare not dynamic,for example
+/music/{{ album_id }}
+in this the "music" part is hardcoded and album_id is dynamic
+
+from music.urls==>
+
+#music/71/
+  path('<album_id>/',views.detail, name='detail'),
+  the variable detail contains "mucic/21"
+  so in
+  /music/{{ album_id }}
+  we can just replace it by the variable detail
+  detail just gives the pattern of the url
+  so
+  /music/{{ album_id }}===>>{% url 'detail' album_id %}
+
+  this kind of a technique is used so that i future if we wish
+  to change the url patten we dont need to go to every html file
+  and change it.
+  we just do the changes in the urls section and boom it changes everywhere
+
+
+}
+
+
+tutorial 21
+{
+sooooooooooooooooooooo
+when I type {% url 'detail' album_id %} then it will search for the url
+linked to the detail variable in the urls but in the newbostondjango.url file(main url file)
+i dont have any url linked to detail i just have this:
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('music/', include('music.urls')),
+    path('movies/',include('movies.urls')),
+]
+
+so I need to tell django to search in one of the apps, therefore I write
+{% url 'detail' album_id %}===> {% url 'music:detail' album_id %}
+
+
+}
