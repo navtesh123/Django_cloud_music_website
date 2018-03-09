@@ -1,4 +1,12 @@
+{% extends 'music/base.html' %}
+
+{% block title %}
+Cloud Music Home
+{% endblock %}
+
+{% block body %}
 {% if all_albums %}
+  <h3>Here are all the Albums:</h3>
    <ul>
        {%for album in all_albums%}
        <li><a href = "{% url 'music:detail' album.id %}">{{album.album_title}}</a></li>
@@ -7,3 +15,5 @@
 {% else %}
     <h3>you dont have any music</h3>
 {% endif %}
+
+{% endblock %}
